@@ -8,7 +8,7 @@ import { users, coaches } from '@/lib/schema';
 import { eq } from 'drizzle-orm';
  
 
-// Define the extended user type
+// Define the extended user types
 interface ExtendedUser {
   id: string | null;
   type: string | null;
