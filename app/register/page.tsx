@@ -42,7 +42,7 @@ export default function Register() {
         loginAs: formValues.loginAs, // Use loginAs from formValues
       });
 
-      //window.location.href = '/completeprofile';
+      window.location.href = '/completeprofile';
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong!');
     }

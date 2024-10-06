@@ -6,8 +6,7 @@ import { db } from '../../../lib/db';
 import { users } from '../../../lib/schema'
 import debug from 'debug';
 import { eq } from 'drizzle-orm';
-import { promises as fs } from 'fs';
-import path from 'path';
+ 
 import { SECRET_KEY } from '@/lib/constants';
 
 import jwt from 'jsonwebtoken';
@@ -43,9 +42,9 @@ export async function POST(req: NextRequest) {
       createdAt: new Date(), // Store the current timestamp as createdAt
     }).returning();
 
-    const token = jwt.sign({ id: insertedUser[0].id }, SECRET_KEY, { expiresIn: '1h' });
+    
 
-    return NextResponse.json({ id: token }, { status: 200 });
+    return NextResponse.json({ id: insertedUser }, { status: 200 });
   } catch (error) {
     logError('Error registering user: %O', error);
     const err = error as any;
@@ -73,7 +72,7 @@ export async function PUT(req: NextRequest) {
   const image = formData.get('image') as File | null;
   let imageUrl = null;
 
-  if (image) {
+  /* if (image) {
     // Create a path for the image (store it in public/uploads)
     const uploadDir = path.join(process.cwd(), 'public', 'uploads');
     const fileName = `${Date.now()}-${image.name}`; // Give the file a unique name
@@ -87,7 +86,7 @@ export async function PUT(req: NextRequest) {
 
     // Set the image URL to be the relative path from the public directory
     imageUrl = `/uploads/${fileName}`;
-  }
+  }*/
 
   const playerIDAsNumber = parseInt(playerID, 10);
   const updatedUser = await db
@@ -103,7 +102,7 @@ export async function PUT(req: NextRequest) {
       team: team || null,
       position: position || null,
       number: number || null,
-      image: imageUrl,
+      
 
     })
     .where(eq(users.id, playerIDAsNumber))

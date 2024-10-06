@@ -6,9 +6,10 @@ import bcrypt from 'bcryptjs';
 import { db } from '@/lib/db'; // Adjust path based on your directory
 import { users, coaches } from '@/lib/schema';
 import { eq } from 'drizzle-orm';
+import { SECRET_KEY } from '@/lib/constants';
  
 
-// Define the extended user types
+// Define the extended user type
 interface ExtendedUser {
   id: string | null;
   type: string | null;
@@ -18,6 +19,7 @@ interface ExtendedUser {
 }
   
 const handler = NextAuth({
+  
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -68,6 +70,7 @@ const handler = NextAuth({
     strategy: 'jwt',
   },
   jwt: {
+    ///secret:SECRET_KEY,
     secret: process.env.NEXTAUTH_SECRET, 
   },
   callbacks: {

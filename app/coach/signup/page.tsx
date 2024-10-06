@@ -47,10 +47,17 @@ export default function Register() {
     setSuccessMessage(null);
     setLoading(true); // Set loading state to true
     const formData = new FormData();
+    
     for (const key in formValues) {
       const value = formValues[key as keyof FormValues];
-      formData.append(key, value as string | Blob);
+      if (key === 'image' && value instanceof File) {
+        formData.append('image', value);
+      } else {
+        formData.append(key, value as string | Blob);
+      }
     }
+
+    
     try {
       const response = await fetch('/api/coach/signup', {
         method: 'POST',
