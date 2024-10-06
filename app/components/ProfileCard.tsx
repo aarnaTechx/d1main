@@ -5,7 +5,6 @@ interface ProfileCardProps {
   slug: string;
   name: string;
   organization: string;
-  image: string;
   rating: number;
 }
 

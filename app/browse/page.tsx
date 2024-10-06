@@ -9,7 +9,6 @@ interface Profile {
   id:number;
   firstName: string;
   organization: string;
-  image: string;
   rating: number;
   slug: string; // Add slug if it's part of the profile
   clubName: string; // Add clubName if it's part of the profile
@@ -69,7 +68,6 @@ const Home = () => {
                 key={profile.id}
                 name={profile.firstName} // Change from firstName to name
                 organization={profile.clubName} // Ensure this matches your Profile interface
-                image={profile.image}
                 rating={profile.rating}
                 slug={profile.slug} // Ensure slug is also part of Profile interface
               />
