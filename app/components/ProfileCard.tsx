@@ -9,7 +9,7 @@ interface ProfileCardProps {
   rating: number;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, organization, image, rating,slug }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, organization, rating,slug }) => {
   const handleRedirect = (slug: string) => {
     //console.log(slug);
     window.location.href = `/coach/${slug}`;
