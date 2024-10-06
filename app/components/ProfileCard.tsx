@@ -22,13 +22,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, organization, image, ra
     <>
     <div  onClick={() => handleRedirect(slug)} className="min-w-[250px] w-[250px] bg-white rounded-lg shadow-md p-4 flex-shrink-0 snap-start"
             >
-              <Image
-                src={image}
-                alt={name}
-                width={200}
-                height={200}
-                className="rounded-lg object-cover w-full h-[200px]"
-              />
+              
               <div className="text-center mt-4">
                 <h3 className="text-lg font-semibold">{name}</h3>
                 <p className="text-gray-500">{organization}</p>
